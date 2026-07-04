@@ -1,0 +1,35 @@
+Total Customers =
+COUNTROWS(CustomerChurn)
+
+Churned Customers =
+CALCULATE(
+    [Total Customers],
+    CustomerChurn[Exited] = 1
+)
+
+Retained Customers =
+CALCULATE(
+    [Total Customers],
+    CustomerChurn[Exited] = 0
+)
+
+Churn Rate % =
+DIVIDE(
+    [Churned Customers],
+    [Total Customers]
+)
+
+Average Credit Score =
+AVERAGE(CustomerChurn[CreditScore])
+
+Average Tenure =
+AVERAGE(CustomerChurn[Tenure])
+
+Monthly Recurring Revenue =
+SUM(CustomerChurn[MonthlyCharges])
+
+Annual Revenue At Risk =
+SUM(CustomerChurn[AnnualRevenueAtRisk])
+
+Average Balance =
+AVERAGE(CustomerChurn[Balance])
